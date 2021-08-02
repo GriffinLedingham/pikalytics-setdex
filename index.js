@@ -103,6 +103,32 @@ for (let i in usageJSON) {
     item: pokemon.items.length > 0 ? pokemon.items[0].item : "",
     moves: moves,
   };
+
+  // hack to replace proper forme name. This should be made generic
+  if(pokemon.name == 'Landorus-Therian') {
+    pokemon.name = 'Landorus-T'
+    setdex[pokemon.name] = {};
+    setdex[pokemon.name][setCat] = {
+      level: 50,
+      evs: evObj,
+      nature: pokemon.spreads.length > 0 ? pokemon.spreads[0].nature : "",
+      ability: pokemon.abilities.length > 0 ? pokemon.abilities[0].ability : "",
+      item: pokemon.items.length > 0 ? pokemon.items[0].item : "",
+      moves: moves,
+    };
+  }
+  if(pokemon.name == 'Zacian-Crowned') {
+    pokemon.name = 'Zacian'
+    setdex[pokemon.name] = {};
+    setdex[pokemon.name][setCat] = {
+      level: 50,
+      evs: evObj,
+      nature: pokemon.spreads.length > 0 ? pokemon.spreads[0].nature : "",
+      ability: pokemon.abilities.length > 0 ? pokemon.abilities[0].ability : "",
+      item: pokemon.items.length > 0 ? pokemon.items[0].item : "",
+      moves: moves,
+    };
+  }
 }
 
 setdexString = `var SETDEX_PIKALYTICS${format != ''?`_${format.toUpperCase()}`:''} = ${JSON.stringify(setdex)}`;
